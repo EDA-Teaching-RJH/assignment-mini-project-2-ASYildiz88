@@ -1,5 +1,6 @@
-INFO system started
-WARNING low battery
-ERROR system crashed
-INFO running
-WARNING memory low
+INFO User logged in
+INFO Data loaded
+WARNING CPU usage high
+ERROR Failed to connect to server
+ERROR Database timeout
+WARNING Disk almost full

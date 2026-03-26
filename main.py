@@ -2,12 +2,13 @@ import json
 from models import LogEntry
 
 
-# count number of each log type
+# count number of each log type from the lines
 def count_logs(lines):
     info_count = 0
     warning_count = 0
     error_count = 0
 
+    # loop through each line and classify using LogEntry class
     for line in lines:
         log = LogEntry(line)
 
@@ -21,7 +22,7 @@ def count_logs(lines):
     return info_count, warning_count, error_count
 
 
-# save results into a JSON file
+# save the results into a JSON file
 def save_results(info_count, warning_count, error_count):
     data = {
         "INFO": info_count,
@@ -29,27 +30,29 @@ def save_results(info_count, warning_count, error_count):
         "ERROR": error_count
     }
 
+    # open file in write mode and store results
     file = open("results.json", "w")
     json.dump(data, file, indent=4)
     file.close()
 
 
 def main():
-    # read log file
+    # open and read the log file
     file = open("logs.txt", "r")
     lines = file.readlines()
     file.close()
 
-    # analyze logs
+    # analyze the logs
     info_count, warning_count, error_count = count_logs(lines)
 
-    # print results
+    # display results in terminal
     print("INFO count:", info_count)
     print("WARNING count:", warning_count)
     print("ERROR count:", error_count)
 
-    # save results
+    # save results to JSON file
     save_results(info_count, warning_count, error_count)
 
 
+# run the main function
 main()
