@@ -1,3 +1,4 @@
+import json
 from models import LogEntry
 
 
@@ -20,12 +21,14 @@ def count_logs(lines):
 
 
 def save_results(info_count, warning_count, error_count):
-    file = open("results.txt", "w")
-    file.write("Log Analysis Results\n")
-    file.write("--------------------\n")
-    file.write("INFO count: " + str(info_count) + "\n")
-    file.write("WARNING count: " + str(warning_count) + "\n")
-    file.write("ERROR count: " + str(error_count) + "\n")
+    data = {
+        "INFO": info_count,
+        "WARNING": warning_count,
+        "ERROR": error_count
+    }
+
+    file = open("results.json", "w")
+    json.dump(data, file, indent=4)
     file.close()
 
 
