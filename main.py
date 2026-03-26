@@ -1,4 +1,4 @@
-import re
+from helpers import is_error, is_warning, is_info
 
 
 def count_logs(lines):
@@ -7,11 +7,11 @@ def count_logs(lines):
     error_count = 0
 
     for line in lines:
-        if re.search("ERROR", line):
+        if is_error(line):
             error_count += 1
-        elif re.search("WARNING", line):
+        elif is_warning(line):
             warning_count += 1
-        elif re.search("INFO", line):
+        elif is_info(line):
             info_count += 1
 
     return info_count, warning_count, error_count
