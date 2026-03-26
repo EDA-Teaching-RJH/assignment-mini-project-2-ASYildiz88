@@ -1,4 +1,4 @@
-from helpers import is_error, is_warning, is_info
+from models import LogEntry
 
 
 def count_logs(lines):
@@ -7,11 +7,13 @@ def count_logs(lines):
     error_count = 0
 
     for line in lines:
-        if is_error(line):
+        log = LogEntry(line)
+
+        if log.type == "ERROR":
             error_count += 1
-        elif is_warning(line):
+        elif log.type == "WARNING":
             warning_count += 1
-        elif is_info(line):
+        else:
             info_count += 1
 
     return info_count, warning_count, error_count
