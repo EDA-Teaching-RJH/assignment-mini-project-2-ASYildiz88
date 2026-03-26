@@ -1,0 +1,5 @@
+INFO system started
+WARNING low battery
+ERROR system crashed
+INFO running
+WARNING memory low
